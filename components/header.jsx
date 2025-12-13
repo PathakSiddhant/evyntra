@@ -1,14 +1,19 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { SignInButton } from "@clerk/nextjs";
-import { SignedIn } from "@clerk/nextjs";
-import { SignedOut } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { Authenticated, Unauthenticated } from "convex/react";
+import { BarLoader } from "react-spinners";
+import { useStoreUser } from "@/hooks/use-store-user";
 // import { SignUpButton } from "@clerk/nextjs";
 
 export default function Header() {
+
+  const {isLoading} = useStoreUser()
+
   return (
     <>
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
@@ -33,21 +38,27 @@ export default function Header() {
 
         {/* Right Side Action */}
         <div className="flext items-center"></div>
-          <SignedIn>
+          <Authenticated>
             {/* Create Event */}
             
             <UserButton />
-          </SignedIn>
+          </Authenticated>
 
-          <SignedOut>
+          <Unauthenticated>
             <SignInButton mode="modal">
               <Button size={"sm"}>Sign In</Button>
             </SignInButton>
-          </SignedOut>
+          </Unauthenticated>
 
        </div>
 
       {/* Mobile Search & Location - Below Header */}
+
+      
+      {/* Loader */}
+      { isLoading && <div className="absolute bootom-0 left-0 w-full">
+        <BarLoader width={'100%'} color="#a855f7"/>
+      </div>}
 
     </nav>
     
