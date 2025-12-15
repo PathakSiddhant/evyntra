@@ -16,7 +16,7 @@ export default function Header() {
 
   const {isLoading} = useStoreUser()
 
-  const [showUpgradeModal, setShowUpgradeModal] = useState()
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false)
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function Header() {
           <div className="ml-auto flex items-center gap-1">
     
 
-            <Button variant={"ghost"} size="sm" onClick = {setShowUpgradeModal}>
+            <Button variant={"ghost"} size="sm" onClick = {() => setShowUpgradeModal(true)}>
               Pricing
             </Button>
 
@@ -55,7 +55,7 @@ export default function Header() {
             </Button>
           </div>  
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
           <Authenticated>
                 
                 <Button size="sm" asChild className="flex gap-2 mr-4">
