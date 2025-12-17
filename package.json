@@ -25,6 +25,7 @@
     "convex": "^1.31.0",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
+    "event-card": "^0.0.4",
     "lucide-react": "^0.556.0",
     "next": "^16.0.10",
     "next-themes": "^0.4.6",
